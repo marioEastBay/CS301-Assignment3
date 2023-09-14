@@ -5,15 +5,12 @@ CS 301-03
 
 Assignment 3 Project Plan
 
-Assignment 3 will include ...
 We will include a main.cpp driver, ItemType.h, and UnsortedLinkedList.h
 
-We expect ...
-Our driver will take a command from the user. This command wil be parsed against a list of commands in
+Our expectation is that our driver will take a command from the user. This command wil be parsed against a list of commands in
 an input text file, and the program will take this command and execute a set of instructions. The output will
 be written into an output file that is given by the user.
 
-We will test ...
 We will test all of the commands in the given input file. In testing our commands we will also test our header files.
 A correctly written output file will mean that our program's drivers, header files, and text files are running
 as intended.
