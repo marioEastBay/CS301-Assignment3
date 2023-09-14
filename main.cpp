@@ -17,7 +17,7 @@ using namespace std;
 void PrintList(ofstream& outFile, UnsortedLinkedList& list);
 
 int main() {
-    int repeatCode = 1;
+    int repeatCode;
     string inputFileName, outputFileName, testRunName;
     ifstream inputFile;
     ofstream outputFile;
@@ -38,73 +38,67 @@ int main() {
     cin >> outputFileName;
     outputFile.open(outputFileName.c_str());
 
-    do {
+    if (!inputFile.good()) {
+        cout << "I/O error. Can't find the input file! \n";
+        exit(2);
+    }
+    inputFile >> command;
 
-        cout << "Enter the name of the test run: ";
-        cin >> testRunName;
-        outputFile << testRunName << endl;
+    numCommands = 0;
+   do {
+       cout << "Enter the name of the test run: ";
+       cin >> command;
+       outputFile << testRunName << endl;
 
-        if (!inputFile.good()) {
-            cout << "I/O error. Can't find the input file! \n";
-            exit(2);
-        }
-        inputFile >> command;
-
-        numCommands = 0;
-        while (command != "Quit")
-        {
-            if (command == "PutItem")
-            {
-                inputFile >> number;
-                item.Initialize(number);
-                list.PutItem(item);
-                item.Print(outputFile);
-                outputFile << " is in list" << endl;
-            }
-            else if (command == "DeleteItem")
-            {
-                inputFile >> number;
-                item.Initialize(number);
-                list.DeleteItem(item);
-                item.Print(outputFile);
-                outputFile << " is deleted" << endl;
-            }
-            else if (command == "GetItem")
-            {
-                inputFile >> number;
-                item.Initialize(number);
-                item = list.GetItem(item, found);
-                item.Print(outputFile);
-                if (found)
-                    outputFile << " found in list." << endl;
-                else outputFile <<  " not in list."  << endl;
-            }
-            else if (command == "GetLength")
-                outputFile << "Length is " << list.GetLength() << endl;
-            else if (command == "IsFull")
-                if (list.IsFull())
-                    outputFile << "List is full." << endl;
-                else outputFile << "List is not full."  << endl;
-            else if (command == "MakeEmpty")
-                list.MakeEmpty();
-            else if (command == "PrintList")
-                PrintList(outputFile, list);
-            else
-                cout << command << " is not a valid command." << endl;
-            numCommands++;
-            cout <<  " Command number " << numCommands << " completed."
-                 << endl;
-            inputFile >> command;
-        };
+       if (command == "PutItem") {
+           inputFile >> number;
+           item.Initialize(number);
+           list.PutItem(item);
+           item.Print(outputFile);
+           outputFile << " is in list" << endl;
+       } else if (command == "DeleteItem") {
+           inputFile >> number;
+           item.Initialize(number);
+           list.DeleteItem(item);
+           item.Print(outputFile);
+           outputFile << " is deleted" << endl;
+       } else if (command == "GetItem") {
+           inputFile >> number;
+           item.Initialize(number);
+           item = list.GetItem(item, found);
+           item.Print(outputFile);
+           if (found)
+               outputFile << " found in list." << endl;
+           else
+               outputFile << " not in list." << endl;
+       } else if (command == "GetLength")
+           outputFile << "Length is " << list.GetLength() << endl;
+       else if (command == "IsFull")
+           if (list.IsFull())
+               outputFile << "List is full." << endl;
+           else outputFile << "List is not full." << endl;
+       else if (command == "MakeEmpty")
+           list.MakeEmpty();
+       else if (command == "PrintList")
+           PrintList(outputFile, list);
+       else
+           cout << command << " is not a valid command." << endl;
+       numCommands++;
+       cout << " Command number " << numCommands << " completed."
+            << endl;
+       inputFile >> command;
 
 
-        cout << "Press 1 to run a different test. Press 0 to exit the program: ";
-        cin >> repeatCode;
-    } while (repeatCode != 0);
+       cout << "Press 1 to run a different test. Press 0 to exit the program: ";
+       cin >> repeatCode;
+   } while (repeatCode != 0);
 
     cout << "Testing completed."  << endl;
     inputFile.close();
+    cout << inputFileName << " closed" << endl;
     outputFile.close();
+    cout << outputFileName << " closed" << endl;
+
     return 0;
 }
 

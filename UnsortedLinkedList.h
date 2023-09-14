@@ -5,12 +5,9 @@
 #include "ItemType.h"
 using namespace std;
 
-class Node {
-public:
+struct Node {
     ItemType data;
     Node* next;
-
-    Node(ItemType value) : data(value), next(nullptr) {}
 };
 
 class UnsortedLinkedList {
@@ -56,6 +53,8 @@ public:
 UnsortedLinkedList::UnsortedLinkedList() {
     head = nullptr;
     length = 0;
+    currentPos = nullptr;
+    listData = nullptr;
 }
 
 UnsortedLinkedList::~UnsortedLinkedList() {
@@ -67,11 +66,18 @@ int UnsortedLinkedList::GetLength() const {
     return length;
 }
 
-void UnsortedLinkedList::PutItem(ItemType item) {
-    Node* newNode = new Node(item);
-    newNode->next = head;
-    head = newNode;
-    length++;
+void UnsortedLinkedList::PutItem(ItemType item)
+// item is in the list; length has been incremented.
+{
+    Node* location;			// Declare a pointer to a node
+
+    location = new Node;		// Get a new node
+    location->data = item;		// Store the item in the node
+    location->next = listData;	// Store address of first node
+    //   in next field of new node
+    listData = location;		// Store address of new node into
+    //   external pointer
+    length++;				// Increment length of the list
 }
 
 void UnsortedLinkedList::PrintList() const {

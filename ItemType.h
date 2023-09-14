@@ -8,8 +8,7 @@
 const int MAX_ITEMS = 5;
 enum RelationType  {LESS, GREATER, EQUAL};
 
-class ItemType
-{
+class ItemType {
 public:
     ItemType();
     RelationType ComparedTo(ItemType) const;
@@ -19,13 +18,11 @@ private:
     int value;
 };
 
-ItemType::ItemType()
-{
+ItemType::ItemType() {
     value = 0;
 }
 
-RelationType ItemType::ComparedTo(ItemType otherItem) const
-{
+RelationType ItemType::ComparedTo(ItemType otherItem) const {
     if (value < otherItem.value)
         return LESS;
     else if (value > otherItem.value)
@@ -33,8 +30,7 @@ RelationType ItemType::ComparedTo(ItemType otherItem) const
     else return EQUAL;
 }
 
-void ItemType::Initialize(int number)
-{
+void ItemType::Initialize(int number) {
     value = number;
 }
 
