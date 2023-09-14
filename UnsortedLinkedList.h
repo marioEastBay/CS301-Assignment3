@@ -82,7 +82,7 @@ void UnsortedLinkedList::PutItem(ItemType item) {
 void UnsortedLinkedList::PrintList() const {
     Node* current = head;
     while (current != nullptr) {
-        cout << current->data << " ";
+        //cout << current->data << " ";
         current = current->next;
     }
     cout << endl;
@@ -94,7 +94,7 @@ ItemType UnsortedLinkedList::GetItem(ItemType& item, bool &found) {
 
     location = listData;
     found = false;
-    moreToSearch = (location != NULL);
+    moreToSearch = (location != nullptr);
 
     while (moreToSearch && !found)
     {
@@ -102,7 +102,7 @@ ItemType UnsortedLinkedList::GetItem(ItemType& item, bool &found) {
         {
             case LESS    :
             case GREATER : location = location->next;
-                moreToSearch = (location != NULL);
+                moreToSearch = (location != nullptr);
                 break;
             case EQUAL   : found = true;
                 item = location->data;
@@ -111,9 +111,6 @@ ItemType UnsortedLinkedList::GetItem(ItemType& item, bool &found) {
     }
     return item;
 }
-
-}
-
 
 void UnsortedLinkedList::DeleteItem(ItemType item) {
     Node* location = listData;
