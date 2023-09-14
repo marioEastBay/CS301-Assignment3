@@ -6,17 +6,65 @@ CS 301-03
 Assignment 3 Project Plan
 
 Assignment 3 will include ...
+We will include a main.cpp driver, ItemType.h, and UnsortedLinkedList.h
+
 We expect ...
+Our driver will take a command from the user. This command wil be parsed against a list of commands in
+an input text file, and the program will take this command and execute a set of instructions. The output will
+be written into an output file that is given by the user.
 
 We will test ...
+We will test all of the commands in the given input file. In testing our commands we will also test our header files.
+A correctly written output file will mean that our program's drivers, header files, and text files are running
+as intended.
 
 The logic will be the following:
 
 Test Cases: 
-We tested every possible input that the user can potentially enter. 
+We will test every command in the input file. We will also test for cases that do not exist in the input files. We
+expect that the program will throw our error messages when we test for cases that do not exist in the input file.
 
+class names:
+Node
+UnsortedLinkedList
+ItemType
 
-class names: 
+functions:
+// UNSORTED LINKED LIST FUNCTIONS:
+ // Constructor
+    UnsortedLinkedList();
 
-functions: 
+    // Destructor
+    ~UnsortedLinkedList();
+
+    // Get the current length of the list
+    int GetLength() const;
+
+    // Add an item to the list
+    void PutItem(ItemType item);
+
+    // Print the contents of the list to the console
+    void PrintList() const;
+
+    // Get an item from the list and set 'found' to true if found, false otherwise
+    ItemType GetItem(ItemType& item, bool& found);
+
+    // Check if the list is full (for a linked list, it's never full)
+    bool IsFull() const { return false;}
+
+    // Delete an item from the list
+    void DeleteItem(ItemType item);
+
+    // Make the list empty
+    void MakeEmpty();
+
+    ItemType GetNextItem();
+
+    void ResetList() { currentPos = nullptr;}
+
+ // ITEM TYPE FUNCTIONS:
+    ItemType();
+    RelationType ComparedTo(ItemType) const;
+    void Print(std::ostream&) const;
+    void Initialize(int number);
 

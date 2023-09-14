@@ -95,18 +95,15 @@ int main() {
             inputFile >> command;
         };
 
-        cout << "Testing completed."  << endl;
-        inputFile.close();
-        outputFile.close();
-        return 0;
+
         cout << "Press 1 to run a different test. Press 0 to exit the program: ";
         cin >> repeatCode;
     } while (repeatCode != 0);
 
-
-
-
-        return 0;
+    cout << "Testing completed."  << endl;
+    inputFile.close();
+    outputFile.close();
+    return 0;
 }
 
 void PrintList(ofstream& dataFile, UnsortedLinkedList& list)

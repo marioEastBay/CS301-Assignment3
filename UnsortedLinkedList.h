@@ -1,5 +1,3 @@
-
-
 #ifndef UNSORTEDLINKEDLIST_H
 #define UNSORTEDLINKEDLIST_H
 
@@ -54,9 +52,6 @@ public:
 
     void ResetList() { currentPos = nullptr;}
 };
-
-#endif
-
 
 UnsortedLinkedList::UnsortedLinkedList() {
     head = nullptr;
@@ -157,3 +152,4 @@ ItemType UnsortedLinkedList::GetNextItem()
     item = currentPos->data;
     return item;
 }
+#endif
