@@ -71,17 +71,20 @@ int main() {
                outputFile << " found in list." << endl;
            else
                outputFile << " not in list." << endl;
-       } else if (command == "GetLength")
+       } else if (command == "GetLength") {
            outputFile << "Length is " << list.GetLength() << endl;
-       else if (command == "IsFull")
+       } else if (command == "IsFull") {
            if (list.IsFull())
                outputFile << "List is full." << endl;
            else outputFile << "List is not full." << endl;
-       else if (command == "MakeEmpty")
+       } else if (command == "MakeEmpty") {
            list.MakeEmpty();
-       else if (command == "PrintList")
+       } else if (command == "PrintList") {
            PrintList(outputFile, list);
-       else
+           if (list.GetLength() == 0) {
+               outputFile << "List is empty" << endl;
+           }
+       } else
            cout << command << " is not a valid command." << endl;
        numCommands++;
        cout << " Command number " << numCommands << " completed."
@@ -102,12 +105,7 @@ int main() {
     return 0;
 }
 
-void PrintList(ofstream& dataFile, UnsortedLinkedList& list)
-// Pre:  list has been initialized.
-//       dataFile is open for writing.
-// Post: Each component in list has been written to dataFile.
-//       dataFile is still open.
-{
+void PrintList(ofstream& dataFile, UnsortedLinkedList& list) {
     int length;
     ItemType item;
 
